@@ -21,8 +21,7 @@
         },
         data () {
             return {
-                
-
+        
             };
         },
         computed: {
