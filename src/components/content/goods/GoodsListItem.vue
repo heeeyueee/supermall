@@ -1,0 +1,95 @@
+<!-- 组件说明 -->
+<template>
+    <div class="goods-item">
+        <img :src="goodsItem.show.img" alt="" @load="imageLoda">
+        <div class="goods-info">
+            <p>{{goodsItem.title}}</p>
+            <span class="price">{{goodsItem.price}}</span>
+            <span class="collect">{{goodsItem.cfav}}</span>
+        </div>
+        
+    </div>
+</template>
+
+<script>
+    //import x from ''
+    export default {
+        components: {
+
+        },
+        props:{
+            goodsItem:{
+                type:Object,
+                default(){
+                    return {}
+                }
+            }
+
+        },
+        data () {
+            return {
+
+            };
+        },
+        computed: {
+
+        },
+        methods: {
+            imageLoda(){
+                this.$bus.$emit("imageLoda")
+            }
+
+        },
+    }
+</script>
+
+<style  scoped>
+.goods-item{
+    margin-bottom: 20px;
+    width: 48%;
+    position: relative;
+
+}
+.goods-item img{
+    border-radius: 5px;
+    width: 100%;
+    
+}
+.good-info{
+    position:absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+  .goods-info p {  
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 3px;
+  }
+
+  .goods-info .price {
+       font-size: 12px;
+    color: var(--color-high-text);
+    margin-right: 20px;
+  }
+
+  .goods-info .collect {
+       font-size: 12px;
+    position: relative;
+  }
+
+  .goods-info .collect::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: -1px;
+    width: 14px;
+    height: 14px;
+    background: url("~assets/img/common/collect.svg") 0 0/14px 14px;
+  }
+</style>
